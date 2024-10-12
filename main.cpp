@@ -8,12 +8,10 @@ int main() {
     Matrix matrix = fileReader.readFile();
     matrix.printMatrix();
 
-    cout<<"\nSize of matrix: " << matrix.getSize();
+    cout<<"\nSize of matrix: " << matrix.getSize() << "\n";
 
-    cout << "Doing that.";
     BruteForce brute(matrix);
-    cout << "Doing that.";
 
-    brute.printRoutes();
+    brute.getRoutes();
     return 0;
 }

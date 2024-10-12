@@ -13,12 +13,6 @@ Matrix::Matrix(int** matrix, int size){
     this->size = size;
     this->matrix = matrix;
 }
-//Matrix::Matrix(int size) : size(size) {
-//    matrix = new int*[size];
-//    for (int i = 0; i < size; i++) {
-//        matrix[i] = new int[size]; // Initialize elements as needed
-//    }
-//}
 
 Matrix::~Matrix() {
     for (int i = 0; i < size; i++) {
@@ -26,10 +20,6 @@ Matrix::~Matrix() {
     }
     delete[] matrix;  // Zwalnianie pamięci dla tablicy wskaźników
 }
-
-//void Matrix::matrixInit(int** matrix, int size){
-//
-//}
 
 void Matrix::printMatrix(){
     for(int i = 0; i < size; i++){

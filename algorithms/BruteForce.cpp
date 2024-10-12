@@ -4,13 +4,21 @@
 
 #include "BruteForce.h"
 
-BruteForce::BruteForce(Matrix matrix) : matrix(matrix) {
-    int size = matrix.getSize();
-    route = new int[size + 1];
+BruteForce::BruteForce(Matrix& matrix) {
+    this->size = matrix.getSize();
+    this->matrix = matrix.getMatrix();
+    numPermutations = 1;
+    for(int i = 1; i <= size; i++){
+        numPermutations*=i;
+    }
+    cout << "Number of permutation = " << numPermutations << "\n";
+    routes = new int*[numPermutations];  // Alokujemy tablicę wskaźników
+    for (int i = 0; i < numPermutations; i++) {
+        routes[i] = new int[size];       // Alokujemy pamięć dla każdej permutacji
+    }
 }
 
 BruteForce::~BruteForce() {
-    delete[] route;
 }
 
 bool contains(int query, int array[], int size) {
@@ -22,41 +30,94 @@ bool contains(int query, int array[], int size) {
     return false;
 }
 
-void BruteForce::findWay(){
-    int size = matrix.getSize();
-    int seenCity [size];
-    int weight = 0;
+int* BruteForce::reverseArr(int* data, int left, int right)
+{
 
-    for (int i = 0; i < size; i++) {
-        seenCity[i] = -1;
+    // Reverse the sub-array
+    while (left < right) {
+        int temp = data[left];
+        data[left++] = data[right];
+        data[right--] = temp;
     }
 
-    for(int i = 0; i < size; i++){
-        route[i+1] = i;
-        for(int j = 0; j < size; j++) {
-            if (matrix.getMatrix()[i][j] != -1) {
-                if(!contains(j,seenCity,size)){
-                    weight += matrix.getMatrix()[i][j];
-                    seenCity[i] = j;
-                    break;
-                }
-                else continue;
-            } else continue;
+    // Return the updated array
+    return data;
+}
+
+bool BruteForce::findNextPermutation(int* data, int size)
+{
+
+    // If the given dataset is empty
+    // or contains only one element
+    // next_permutation is not possible
+    if (size <= 1)
+        return false;
+
+    int last = size - 2;
+
+    // find the longest non-increasing suffix
+    // and find the pivot
+    while (last >= 0) {
+        if (data[last] < data[last + 1]) {
+            break;
+        }
+        last--;
+    }// If there is no increasing pair
+    // there is no higher order permutation
+    if (last < 0)
+        return false;
+
+    int nextGreater = size - 1;
+
+    // Find the rightmost successor to the pivot
+    for (int i = size - 1; i > last; i--) {
+        if (data[i] > data[last]) {
+            nextGreater = i;
+            break;
         }
     }
-    route[0] = weight;
+
+    // Swap the successor and the pivot
+    swap(data[nextGreater], data[last]);
+
+    // Reverse the suffix
+    reverseArr(data, last + 1, size - 1);
+
+    // Return true as the next_permutation is done
+    return true;
 }
 
-void BruteForce::printRoutes(){
-    findWay();
-    for(int i = 0; i < matrix.getSize()+1; i++){
-        cout << "From " << route[i] << " to " << route[i+1];
-        cout << "Weight = " << matrix.getMatrix()[route[i]][route[i+1]];
+
+void BruteForce::getRoutes(){
+    int* city;
+    int iterator = 0;
+    for(int i = 0; i < size; i++){
+        city[i] = i;
     }
-    cout << "Total weight = " << route[0];
+    findNextPermutation(city, size);
+    bool flag = true;
+    while(flag) {
+        flag = findNextPermutation(city, size);
+        cout << "Permutation : " << "\n";
+        for (int i = 0; i < size; i++) {
+            cout << city[i] << " ";
+            routes[iterator][i] = city[i];
+        }
+        cout << "\n";
+        iterator++;
+    }
+    cout << "array = \n";
+    for(int i = 0; i < numPermutations-1; i++){
+        for(int j = 0; j < size; j++){
+            cout << routes[i][j] << " ";
+        }
+        cout << "\n";
+    }
 }
 
-// Wybieramy wierzcholek 0, iterujemy po sasiadach i wybieramy pierwszego, ktory nie jest na liscie seenCity
-//wybrany sasiad staje się teraz wierzcholkiem docelowym i iterujemy po jego sasiadach
-//przy kazdej iteracji sprawdzamy czy i == arr.size()-1, jesli tak to szukamy drogi do wierzcholka poczatkowego
+int* BruteForce::calculateRoutes(){
+int minWeight = INT_MAX;
+for(int i = 0; i < numPermutations; i++){
 
+}
+}

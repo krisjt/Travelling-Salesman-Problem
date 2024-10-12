@@ -14,15 +14,18 @@
 class BruteForce {//ASYMETRYCZNE
 // 1) zaczynamy w wybranym miescie i musimy odwiedzic kazde miasto raz i wrocic do siebie
 public:
-    explicit BruteForce(Matrix matrix);
+    explicit BruteForce(Matrix& matrix);
     ~BruteForce();
-    void printRoutes();
+    void getRoutes();
 private:
-    Matrix matrix;
-    void findWay();
-    int* route;
-//    int** routes;
-
+    int numPermutations;
+    int** matrix;
+    bool findNextPermutation(int* data, int size);
+    int size;
+    static int* reverseArr(int* data, int left, int right);
+//    bool getPermutations(int begin, int end);
+    int** routes;
+    int *calculateRoutes();
 };
 
 
