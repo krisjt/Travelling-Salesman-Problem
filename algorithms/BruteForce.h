@@ -7,25 +7,37 @@
 
 #include "../structures/Matrix.h"
 
-//Użyj funkcji do generowania wszystkich możliwych permutacji tras. Każda permutacja to potencjalna trasa, którą można przetestować.
-//Dla każdej permutacji oblicz długość trasy, sumując odległości między kolejnymi miastami i dodając odległość powrotną do miasta startowego.
-//Zapisuj najkrótszą trasę, aktualizując ją, gdy znajdziesz trasę krótszą od dotychczasowej.
-//Zwróć najkrótszą trasę i jej długość.
-class BruteForce {//ASYMETRYCZNE
-// 1) zaczynamy w wybranym miescie i musimy odwiedzic kazde miasto raz i wrocic do siebie
+class BruteForce {
 public:
     explicit BruteForce(Matrix& matrix);
     ~BruteForce();
-    void getRoutes();
+    void printRoutes();
+    void start();
+    void printCalculations();
 private:
-    int numPermutations;
-    int** matrix;
-    bool findNextPermutation(int* data, int size);
+    //number of cities/size of matrix
     int size;
-    static int* reverseArr(int* data, int left, int right);
-//    bool getPermutations(int begin, int end);
+
+    //adjacency matrix
+    int** matrix;
+
+    //number of possible routes
+    int numPermutations;
+
+    //array of all possible routes
     int** routes;
-    int *calculateRoutes();
+
+    //method that creates all permutations for routes
+    void getRoutes();
+
+    //method that finds one permutation
+    bool findNextPermutation(int* data, int size);
+
+    //method that reverts an array from the specified points
+    static int* reverseArr(int* data, int left, int right);
+
+    //method that finds the shortest route
+    void calculateRoutes();
 };
 
 

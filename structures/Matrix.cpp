@@ -28,6 +28,7 @@ void Matrix::printMatrix(){
         }
         cout<<'\n';
     }
+
 }
 
 int** Matrix::getMatrix(){

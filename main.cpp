@@ -12,6 +12,8 @@ int main() {
 
     BruteForce brute(matrix);
 
-    brute.getRoutes();
+    brute.start();
+    brute.printRoutes();
+    brute.printCalculations();
     return 0;
 }
