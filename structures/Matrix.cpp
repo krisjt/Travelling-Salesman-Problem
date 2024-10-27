@@ -11,20 +11,20 @@
 
 Matrix::Matrix(int** matrix, int size){
     this->size = size;
-    this->matrix = matrix;
+    this->data = matrix;
 }
 
 Matrix::~Matrix() {
     for (int i = 0; i < size; i++) {
-        delete[] matrix[i];  // Zwalnianie pamięci dla każdego wiersza
+        delete[] data[i];  // Zwalnianie pamięci dla każdego wiersza
     }
-    delete[] matrix;  // Zwalnianie pamięci dla tablicy wskaźników
+    delete[] data;  // Zwalnianie pamięci dla tablicy wskaźników
 }
 
 void Matrix::printMatrix(){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            cout << matrix[i][j] << ' ';
+            cout << data[i][j] << ' ';
         }
         cout<<'\n';
     }
@@ -32,11 +32,19 @@ void Matrix::printMatrix(){
 }
 
 int** Matrix::getMatrix(){
-    return matrix;
+    return data;
+}
+
+void Matrix::copyMatrix(int** &other){
+    for(int i = 0; i < size; i++){
+        for(int j = 0; j < size; j++){
+            other[i][j]=data[i][j];
+        }
+    }
 }
 
 int Matrix::getDistance(int i, int j) const {
-    return matrix[i][j];
+    return data[i][j];
 }
 
 int Matrix::getSize() const{

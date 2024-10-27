@@ -10,7 +10,7 @@ using namespace std;
 class Matrix {
 private:
     int size;
-    int** matrix;
+    int** data;
 public:
 //    Matrix();
     Matrix(int** matrix, int size);
@@ -19,6 +19,8 @@ public:
     int getSize() const;
     int getDistance(int i, int j) const;
     int** getMatrix();
+
+    void copyMatrix(int **&other);
 };
 
 #endif //PEA1_MATRIX_H

@@ -1,7 +1,12 @@
 #include <iostream>
+#include <time.h>
 #include "structures/Matrix.h"
 #include "IO/FileReader.h"
 #include "algorithms/BruteForce.h"
+#include "algorithms/BranchAndBound.h"
+#include "algorithms/DynamicProgramming.h"
+
+
 
 int main() {
     FileReader fileReader("/Users/krystynanowak/Desktop/PEA1/file.txt");
@@ -10,10 +15,21 @@ int main() {
 
     cout<<"\nSize of matrix: " << matrix.getSize() << "\n";
 
-    BruteForce brute(matrix);
+    cout << "Dynamic Programming: " << endl;
+    DynamicProgramming dp(matrix);
+    dp.start();
 
-    brute.start();
-    brute.printRoutes();
-    brute.printCalculations();
+    cout << "B&B" << endl;
+    BranchAndBound bb(matrix);
+    bb.start();
+
+    cout << "Brute Force" << endl;
+    BruteForce brute(matrix);
+    int* path = brute.bruteForce();
+    for(int i = 0; i < matrix.getSize(); i++){
+        cout << path[i];
+    }
+
     return 0;
 }
+

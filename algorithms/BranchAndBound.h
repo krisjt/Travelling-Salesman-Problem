@@ -5,13 +5,27 @@
 #ifndef PEA1_BRANCHANDBOUND_H
 #define PEA1_BRANCHANDBOUND_H
 
+#include "../structures//Matrix.h"
 
 class BranchAndBound {
 public:
-    BranchAndBound();
+    explicit BranchAndBound(Matrix& matrix);
+    ~BranchAndBound();
+    //function to reduce rows and cols and calculate lower band
+    void start();
 private:
     int** matrix;
+    int* bestPath;
+    int bestCost = INT_MAX;
+    int size;
+
+    int matrixReduction(int **currentMatrix);
+
+    void updateMatrix(int **currentMatrix, int row, int col);
+
+    void
+    tspBranchAndBound(int **currentMatrix, int currentBound, int currentCost, int level, bool *visited,
+                      int *currentPath);
 };
 
-//lower band: two nearest cities for each city, plus them together, divide by 2 and find ceiling
 #endif //PEA1_BRANCHANDBOUND_H

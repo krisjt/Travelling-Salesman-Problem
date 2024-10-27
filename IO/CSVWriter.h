@@ -28,7 +28,7 @@ private:
     /**
      * Amount of corresponding data every data point has.
      */
-    const int columnWidth;
+//    const int columnWidth;
 
     /**
      * 2D array of data.
@@ -40,6 +40,8 @@ private:
      */
     string * headers;
 
+    double* time;
+    double* values;
     /**
      * File output stream.
      */
@@ -50,7 +52,7 @@ private:
      */
     void writeData();
 public:
-    CSVWriter(string fileName, int dataSize, int columnWidth, string* headers, double** data);
+    CSVWriter(std::string fileName, int dataSize, double* time, double* values);
 
 };
 
