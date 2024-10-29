@@ -26,7 +26,9 @@ int FileReader::readOneValue() {
         }
         return nextVal;
     }
-    throw runtime_error("File not opened - maybe it was already closed?");
+    if (input.fail()) {
+        throw runtime_error("File error - stopping program");
+    }
 }
 
 Matrix FileReader::readFile(){
@@ -35,7 +37,11 @@ Matrix FileReader::readFile(){
     for(int i = 0; i < size; i++){
         matrix[i] = new int[size];
         for(int j = 0; j < size; j++) {
-            matrix[i][j] = readOneValue();
+            if(i!=j)matrix[i][j] = readOneValue();
+            else{
+                matrix[i][j] = -1;
+                readOneValue();
+            }
         }
     }
     return Matrix(matrix, size);;

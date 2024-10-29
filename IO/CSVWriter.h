@@ -15,45 +15,17 @@ using namespace std;
  */
 class CSVWriter {
 private:
-    /**
-     * Name of file to be written.
-     */
-    const string fileName;
+    std::string fileName;
+    int dataSize;
+    const double* times;
+    const double* values;
+    std::ofstream stream;
 
-    /**
-     * Amount of data points.
-     */
-    const int dataSize;
-
-    /**
-     * Amount of corresponding data every data point has.
-     */
-//    const int columnWidth;
-
-    /**
-     * 2D array of data.
-     */
-    double** data;
-
-    /**
-     * Column names.
-     */
-    string * headers;
-
-    double* time;
-    double* values;
-    /**
-     * File output stream.
-     */
-    ofstream stream;
-
-    /**
-     * Write data to file.
-     */
     void writeData();
-public:
-    CSVWriter(std::string fileName, int dataSize, double* time, double* values);
 
+public:
+    CSVWriter(std::string fileName, int dataSize, const double* times, const double* values);
+    ~CSVWriter();
 };
 
 

@@ -82,6 +82,24 @@ build CMakeFiles/PEA1.dir/algorithms/DynamicProgramming.cpp.o: CXX_COMPILER__PEA
   OBJECT_DIR = CMakeFiles/PEA1.dir
   OBJECT_FILE_DIR = CMakeFiles/PEA1.dir/algorithms
 
+build CMakeFiles/PEA1.dir/algorithms/BnB.cpp.o: CXX_COMPILER__PEA1_Debug /Users/krystynanowak/Desktop/PEA1/algorithms/BnB.cpp || cmake_object_order_depends_target_PEA1
+  DEP_FILE = CMakeFiles/PEA1.dir/algorithms/BnB.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.3 -std=gnu++14
+  OBJECT_DIR = CMakeFiles/PEA1.dir
+  OBJECT_FILE_DIR = CMakeFiles/PEA1.dir/algorithms
+
+build CMakeFiles/PEA1.dir/measurements/Measurements.cpp.o: CXX_COMPILER__PEA1_Debug /Users/krystynanowak/Desktop/PEA1/measurements/Measurements.cpp || cmake_object_order_depends_target_PEA1
+  DEP_FILE = CMakeFiles/PEA1.dir/measurements/Measurements.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.3 -std=gnu++14
+  OBJECT_DIR = CMakeFiles/PEA1.dir
+  OBJECT_FILE_DIR = CMakeFiles/PEA1.dir/measurements
+
+build CMakeFiles/PEA1.dir/IO/CSVWriter.cpp.o: CXX_COMPILER__PEA1_Debug /Users/krystynanowak/Desktop/PEA1/IO/CSVWriter.cpp || cmake_object_order_depends_target_PEA1
+  DEP_FILE = CMakeFiles/PEA1.dir/IO/CSVWriter.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.3 -std=gnu++14
+  OBJECT_DIR = CMakeFiles/PEA1.dir
+  OBJECT_FILE_DIR = CMakeFiles/PEA1.dir/IO
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target PEA1
@@ -90,7 +108,7 @@ build CMakeFiles/PEA1.dir/algorithms/DynamicProgramming.cpp.o: CXX_COMPILER__PEA
 #############################################
 # Link the executable PEA1
 
-build PEA1: CXX_EXECUTABLE_LINKER__PEA1_Debug CMakeFiles/PEA1.dir/main.cpp.o CMakeFiles/PEA1.dir/IO/FileReader.cpp.o CMakeFiles/PEA1.dir/structures/Matrix.cpp.o CMakeFiles/PEA1.dir/algorithms/BruteForce.cpp.o CMakeFiles/PEA1.dir/algorithms/BranchAndBound.cpp.o CMakeFiles/PEA1.dir/algorithms/DynamicProgramming.cpp.o
+build PEA1: CXX_EXECUTABLE_LINKER__PEA1_Debug CMakeFiles/PEA1.dir/main.cpp.o CMakeFiles/PEA1.dir/IO/FileReader.cpp.o CMakeFiles/PEA1.dir/structures/Matrix.cpp.o CMakeFiles/PEA1.dir/algorithms/BruteForce.cpp.o CMakeFiles/PEA1.dir/algorithms/BranchAndBound.cpp.o CMakeFiles/PEA1.dir/algorithms/DynamicProgramming.cpp.o CMakeFiles/PEA1.dir/algorithms/BnB.cpp.o CMakeFiles/PEA1.dir/measurements/Measurements.cpp.o CMakeFiles/PEA1.dir/IO/CSVWriter.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.3
   OBJECT_DIR = CMakeFiles/PEA1.dir
   POST_BUILD = :

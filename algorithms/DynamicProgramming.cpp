@@ -109,12 +109,4 @@ void DynamicProgramming::start() {
     // Reconstruct the path
     path[0] = 0; // Start from city 0
     reconstructPath(initialMask, 0, 1);
-
-    // Print results
-    std::cout << "Najlepszy koszt: " << optimalCost << std::endl;
-    std::cout << "Najlepsza trasa: ";
-    for (int i = 0; i <= size; i++) {
-        std::cout << path[i] << " ";
-    }
-    std::cout << std::endl;
 }
