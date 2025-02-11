@@ -1,28 +1,28 @@
 #include "CSVWriter.h"
 #include <iostream>
 
-CSVWriter::CSVWriter(std::string fileName, int dataSize, const double* times, const double* values)
-        : fileName(fileName), dataSize(dataSize), times(times), values(values), stream(fileName) {
+// Konstruktor inicjalizujacy nazwe pliku, stream oraz sprawdzajacy czy sie otworzyl
+CSVWriter::CSVWriter(std::string fileName)
+        : fileName(fileName), stream(fileName, std::ios_base::app) {
     if (!stream.is_open()) {
         std::cerr << "Failed to open file: " << fileName << std::endl;
         return;
     }
-    writeData();
 }
 
+// Destruktor zamykajacy strumien/plik
 CSVWriter::~CSVWriter() {
     if (stream.is_open()) {
         stream.close();
     }
 }
 
-void CSVWriter::writeData() {
-    // Zapisujemy nagłówki
-    stream << "wielkosc,czas\n";
-
-    // Zapisujemy dane
-    for (int i = 0; i < dataSize; i++) {
-        stream << values[i] << "," << times[i] << "\n";
+// Metoda do wpisywania danych do pliku
+void CSVWriter::writeData(double time, double value) {
+    stream.seekp(0, std::ios::end);
+    if (stream.tellp() == 0) {
+        stream << "wielkosc,czas\n";
     }
+       stream << value << ", " << time << endl;
     stream.flush();
 }

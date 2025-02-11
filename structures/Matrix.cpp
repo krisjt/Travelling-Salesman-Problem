@@ -4,16 +4,13 @@
 
 #include "Matrix.h"
 
-//Matrix::Matrix() {
-//    this->size = 0;
-//    this->matrix = nullptr;
-//}
-
+// Konstruktor
 Matrix::Matrix(int** matrix, int size){
     this->size = size;
     this->data = matrix;
 }
 
+// Destruktor
 Matrix::~Matrix() {
     for (int i = 0; i < size; i++) {
         delete[] data[i];  // Zwalnianie pamięci dla każdego wiersza
@@ -21,6 +18,7 @@ Matrix::~Matrix() {
     delete[] data;  // Zwalnianie pamięci dla tablicy wskaźników
 }
 
+// Metoda do wypisywania macierzy
 void Matrix::printMatrix(){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
@@ -31,10 +29,12 @@ void Matrix::printMatrix(){
 
 }
 
+// Metoda zwracajaca dane z maciezry
 int** Matrix::getMatrix(){
     return data;
 }
 
+// Metoda kopiujaca macierz
 void Matrix::copyMatrix(int** &other){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
@@ -43,10 +43,12 @@ void Matrix::copyMatrix(int** &other){
     }
 }
 
+// Metoda zwracajaca dlugosc krawedzi
 int Matrix::getDistance(int i, int j) const {
     return data[i][j];
 }
 
+// Metoda zwracajaca wielkosc macierzy
 int Matrix::getSize() const{
     return size;
 }

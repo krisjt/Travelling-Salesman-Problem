@@ -22,6 +22,7 @@ private:
 public:
     explicit FileReader(string filename);
     Matrix readFile();
+    void generateMatrix(int size);
 };
 
 

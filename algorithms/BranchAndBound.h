@@ -1,31 +1,49 @@
 //
-// Created by Krystyna Nowak on 14/10/2024.
+// Created by Krystyna Nowak on 27/10/2024.
 //
 
 #ifndef PEA1_BRANCHANDBOUND_H
 #define PEA1_BRANCHANDBOUND_H
-
-#include "../structures//Matrix.h"
+#include "../structures/Matrix.h"
 
 class BranchAndBound {
-public:
-    explicit BranchAndBound(Matrix& matrix);
-    ~BranchAndBound();
-    //function to reduce rows and cols and calculate lower band
-    void start();
 private:
-    int** matrix;
-    int* bestPath;
-    int bestCost = INT_MAX;
+    // wielkosc macierzy
     int size;
 
-    int matrixReduction(int **currentMatrix);
+    // macierz
+    int**matrix;
 
-    void updateMatrix(int **currentMatrix, int row, int col);
+    // najlepsza sciezka
+    int* bestPath;
 
-    void
-    tspBranchAndBound(int **currentMatrix, int currentBound, int currentCost, int level, bool *visited,
-                      int *currentPath);
+    // aktualna sciezka
+    int* currentPath;
+
+    // tablica przechowujaca informacje o odwiedzonych miastach
+    bool* visited;
+
+    // najlepszy koszt
+    int bestCost;
+
+    // metoda do obliczania dolnego ograniczenia
+    int calculateLowerBound(int pos, bool* visited);
+
+    // metoda do znajdowania najkrotszej trasy
+    void tsp(int pos, int count, int currentCost);
+public:
+    // konstruktor
+    BranchAndBound(Matrix& data);
+
+    // destruktor
+    ~BranchAndBound();
+
+    // metoda ktora rozpoczyna dzialanie algorytmu
+    void start();
+
+    // metoda do wypisywania wynikow
+    void printResult();
 };
+
 
 #endif //PEA1_BRANCHANDBOUND_H

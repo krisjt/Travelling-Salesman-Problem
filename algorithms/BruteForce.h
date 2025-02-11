@@ -10,9 +10,13 @@
 class BruteForce {
 public:
     explicit BruteForce(Matrix& matrix);
+
     ~BruteForce();
-    int* bruteForce();
+
+    int* start();
+
     void printResult();
+
 private:
     int* shortestPath;
 

@@ -7,21 +7,22 @@
 #include <ctime>
 #include "../IO/CSVWriter.h"
 #include "../IO/FileReader.h"
-#include "../algorithms/BranchAndBound.h"
 #include "../algorithms/BruteForce.h"
 #include "../algorithms/DynamicProgramming.h"
-#include "../algorithms/BnB.h"
+#include "../algorithms/BranchAndBound.h"
 #include <string>
 
 class Measurements {
 private:
+    // liczba powtorzen badania
     int numRep;
-    void calculateBnB();
-    void calculateBF();
-    void calculateDP();
+
+    // maksymalna wielksoc macierzy
+    int maxSize;
 
 public:
-    explicit Measurements(int numRep);
+    explicit Measurements(int numRep, int maxSize);
     void calculate();
+    ~Measurements();
 };
 #endif //PEA1_MEASUREMENTS_H
