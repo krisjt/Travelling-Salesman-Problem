@@ -1,3 +1,0 @@
-/Users/krystynanowak/Desktop/PEA1/cmake-build-debug/CMakeFiles/PEA1.dir
-/Users/krystynanowak/Desktop/PEA1/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/krystynanowak/Desktop/PEA1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
